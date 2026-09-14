@@ -1,0 +1,46 @@
+:root {
+  color-scheme: dark;
+  font-family: system-ui, sans-serif;
+  background: #111827;
+  color: #f9fafb;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  max-width: 34rem;
+  margin: auto;
+  padding: 2rem 1.25rem;
+}
+
+form {
+  padding: 1rem;
+  border: 1px solid #374151;
+  border-radius: 12px;
+}
+
+label {
+  display: block;
+  margin: 1.4rem 0;
+}
+
+input {
+  display: block;
+  max-width: 100%;
+  margin-top: .5rem;
+}
+
+button {
+  padding: .8rem 1.2rem;
+  border: 0;
+  border-radius: 8px;
+  background: #22c55e;
+  color: #052e16;
+  font-weight: 700;
+}
+
+button:disabled {
+  opacity: .6;
+}
