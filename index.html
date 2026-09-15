@@ -14,13 +14,31 @@
     <h1>Send card photos</h1>
     <p>This link expires shortly and works once. Place the card flat in even light, avoid glare, and fill the frame.</p>
     <form id="capture-form">
-      <label>Front
-        <input required name="front" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif" capture="environment">
-      </label>
-      <label>Back
-        <input required name="back" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif" capture="environment">
-      </label>
-      <button type="submit">Send securely</button>
+      <fieldset>
+        <legend>Front</legend>
+        <div class="source-options">
+          <label class="source-option">Take Photo
+            <input data-image-input data-side="front" data-source="camera" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif" capture="environment">
+          </label>
+          <label class="source-option">Choose Existing Photo
+            <input data-image-input data-side="front" data-source="library" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif">
+          </label>
+        </div>
+        <p class="selection" data-selection-for="front">No front photo selected.</p>
+      </fieldset>
+      <fieldset>
+        <legend>Back</legend>
+        <div class="source-options">
+          <label class="source-option">Take Photo
+            <input data-image-input data-side="back" data-source="camera" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif" capture="environment">
+          </label>
+          <label class="source-option">Choose Existing Photo
+            <input data-image-input data-side="back" data-source="library" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif">
+          </label>
+        </div>
+        <p class="selection" data-selection-for="back">No back photo selected.</p>
+      </fieldset>
+      <button type="submit" disabled>Send securely</button>
       <p id="status" role="status" aria-live="polite"></p>
     </form>
   </main>

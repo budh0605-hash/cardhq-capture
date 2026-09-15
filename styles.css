@@ -21,15 +21,51 @@ form {
   border-radius: 12px;
 }
 
-label {
-  display: block;
+fieldset {
   margin: 1.4rem 0;
+  padding: 0;
+  border: 0;
 }
 
-input {
+legend {
+  margin-bottom: .65rem;
+  font-weight: 700;
+}
+
+.source-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: .65rem;
+}
+
+.source-option {
+  position: relative;
   display: block;
-  max-width: 100%;
-  margin-top: .5rem;
+  padding: .8rem 1rem;
+  border: 1px solid #6b7280;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.source-option:focus-within {
+  outline: 2px solid #60a5fa;
+  outline-offset: 2px;
+}
+
+.source-option input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.selection {
+  margin: .55rem 0 0;
+  color: #d1d5db;
+  font-size: .9rem;
 }
 
 button {
