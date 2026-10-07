@@ -12,27 +12,29 @@
 <body>
   <main>
     <h1>Send card photos</h1>
-    <p>This link expires shortly and works once. Place the card flat in even light, avoid glare, and fill the frame.</p>
+    <p>Scan the QR once to connect to this intake. Active capture continues while you take photos. Place the card flat in even light, avoid glare, and fill the frame.</p>
+    <p>Use Camera for a new photo or Photos to choose from your library. Your phone's Photos menu may also offer its camera.</p>
     <form id="capture-form">
       <fieldset>
         <legend>Front</legend>
         <div class="source-options">
-          <label class="source-option">Take Photo
+          <label class="source-option">Camera
             <input data-image-input data-side="front" data-source="camera" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif" capture="environment">
           </label>
-          <label class="source-option">Choose Existing Photo
+          <label class="source-option">Photos
             <input data-image-input data-side="front" data-source="library" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif">
           </label>
         </div>
         <p class="selection" data-selection-for="front">No front photo selected.</p>
+        <button id="retry-front" type="button" hidden>Continue with saved Front</button>
       </fieldset>
       <fieldset>
         <legend>Back</legend>
         <div class="source-options">
-          <label class="source-option">Take Photo
+          <label class="source-option">Camera
             <input data-image-input data-side="back" data-source="camera" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif" capture="environment">
           </label>
-          <label class="source-option">Choose Existing Photo
+          <label class="source-option">Photos
             <input data-image-input data-side="back" data-source="library" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif">
           </label>
         </div>
@@ -43,6 +45,7 @@
       <button id="next-card" type="button" hidden>Next Card</button>
       <button id="finish-batch" type="button" hidden>Finish Batch</button>
       <p id="status" role="status" aria-live="polite"></p>
+      <p>Capture ends after 30 minutes without activity or 12 hours from connection. A fresh desktop QR can resume the same unfinished card. Finish Batch ends new capture.</p>
     </form>
   </main>
 </body>
