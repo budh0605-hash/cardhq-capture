@@ -1,5 +1,8 @@
 export const UPLOAD_URL = "https://lyvisiuknkumqrxihqnb.supabase.co/functions/v1/mobile-intake/upload";
 
+// Safari requires native fetch to receive its global Window, even when called by a session.
+const browserFetch = (...args) => globalThis.fetch(...args);
+
 export function readAndClearCapability(locationValue, historyValue) {
   const token = new URLSearchParams(locationValue.hash.slice(1)).get("token") || "";
   historyValue.replaceState(null, "", locationValue.pathname);
@@ -23,7 +26,7 @@ export function buildUploadBody(selections, token) {
   return body;
 }
 
-export async function submitCapture(selections, token, fetcher = fetch) {
+export async function submitCapture(selections, token, fetcher = browserFetch) {
   const body = buildUploadBody(selections, token);
   return fetcher(UPLOAD_URL, { method: "POST", body, referrerPolicy: "no-referrer" });
 }
@@ -59,7 +62,7 @@ const fingerprints=async selections=>Promise.all(['front','back'].map(async side
     .map(v=>v.toString(16).padStart(2,'0')).join('')));
 
 export class CaptureSession {
-  constructor(token,fetcher=fetch,journal=new PhoneJournal()) {
+  constructor(token,fetcher=browserFetch,journal=new PhoneJournal()) {
     this.token=token;this.fetcher=fetcher;this.journal=journal;this.selections={};this.submitted=false;this.busy=false;
   }
   async action(action,item_id=null){
